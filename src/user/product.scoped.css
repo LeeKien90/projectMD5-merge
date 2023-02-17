@@ -1,0 +1,11 @@
+.wh {
+    width: 500px;
+    height: 500px;
+}
+.imgclass {
+    object-fit: cover;
+    padding-top: 50px;
+}
+/* .styleNew{
+    padding-left: 150px !important;
+} */
