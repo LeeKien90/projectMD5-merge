@@ -15,14 +15,14 @@ export default function ProductDetailCpn() {
             data-ride="carousel"
           >
             <div className="carousel-inner bg-light wh">
-              <div className="carousel-item active">
+              <div className="carousel-item active imageDetail">
                 <img
                   className="imgclass"
                   src={require("./images/women-clothes-img.png")}
                   alt="Image"
                 />
               </div>
-              <div className="carousel-item">
+              <div className="carousel-item imageDetail">
                 <img
                   className="imgclass"
                   src={require("./images/tshirt-img.png")}
@@ -49,7 +49,7 @@ export default function ProductDetailCpn() {
         <div className="col-lg-7 h-auto mb-30">
           <div className="h-100 bg-light p-30">
             <h3>Product Name Goes Here</h3>
-           
+
             <h3 className="font-weight-semi-bold mb-4">$150.00</h3>
             <p className="mb-4">
               Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat
@@ -66,7 +66,7 @@ export default function ProductDetailCpn() {
                     id="size-1"
                     name="size"
                   />
-                  <label className="custom-control-label" htmlFor="size-1">
+                  <label className="custom-control-label my-control-lable" htmlFor="size-1">
                     XS
                   </label>
                 </div>
@@ -77,43 +77,10 @@ export default function ProductDetailCpn() {
                     id="size-2"
                     name="size"
                   />
-                  <label className="custom-control-label" htmlFor="size-2">
+                  <label className="custom-control-label my-control-lable" htmlFor="size-2">
                     S
                   </label>
-                </div>
-                <div className="custom-control custom-radio custom-control-inline">
-                  <input
-                    type="radio"
-                    className="custom-control-input"
-                    id="size-3"
-                    name="size"
-                  />
-                  <label className="custom-control-label" htmlFor="size-3">
-                    M
-                  </label>
-                </div>
-                <div className="custom-control custom-radio custom-control-inline">
-                  <input
-                    type="radio"
-                    className="custom-control-input"
-                    id="size-4"
-                    name="size"
-                  />
-                  <label className="custom-control-label" htmlFor="size-4">
-                    L
-                  </label>
-                </div>
-                <div className="custom-control custom-radio custom-control-inline">
-                  <input
-                    type="radio"
-                    className="custom-control-input"
-                    id="size-5"
-                    name="size"
-                  />
-                  <label className="custom-control-label" htmlFor="size-5">
-                    XL
-                  </label>
-                </div>
+                </div>               
               </form>
             </div>
             <div className="d-flex mb-4">
@@ -126,7 +93,10 @@ export default function ProductDetailCpn() {
                     id="color-1"
                     name="color"
                   />
-                  <label className="custom-control-label" htmlFor="color-1">
+                  <label
+                    className="custom-control-label my-control-lable"
+                    htmlFor="color-1"
+                  >
                     Black
                   </label>
                 </div>
@@ -137,41 +107,11 @@ export default function ProductDetailCpn() {
                     id="color-2"
                     name="color"
                   />
-                  <label className="custom-control-label" htmlFor="color-2">
+                  <label
+                    className="custom-control-label my-control-lable"
+                    htmlFor="color-2"
+                  >
                     White
-                  </label>
-                </div>
-                <div className="custom-control custom-radio custom-control-inline">
-                  <input
-                    type="radio"
-                    className="custom-control-input"
-                    id="color-3"
-                    name="color"
-                  />
-                  <label className="custom-control-label" htmlFor="color-3">
-                    Red
-                  </label>
-                </div>
-                <div className="custom-control custom-radio custom-control-inline">
-                  <input
-                    type="radio"
-                    className="custom-control-input"
-                    id="color-4"
-                    name="color"
-                  />
-                  <label className="custom-control-label" htmlFor="color-4">
-                    Blue
-                  </label>
-                </div>
-                <div className="custom-control custom-radio custom-control-inline">
-                  <input
-                    type="radio"
-                    className="custom-control-input"
-                    id="color-5"
-                    name="color"
-                  />
-                  <label className="custom-control-label" htmlFor="color-5">
-                    Green
                   </label>
                 </div>
               </form>
@@ -185,7 +125,7 @@ export default function ProductDetailCpn() {
                 </div>
                 <input
                   type="text"
-                  className="form-control bg-secondary border-0 text-center"
+                  className="form-control border-0 text-center"
                   defaultValue={1}
                 />
                 <div className="input-group-btn">
@@ -196,9 +136,9 @@ export default function ProductDetailCpn() {
               </div>
               <Link to={"/user/cart"}>
                 <button className="btn btn-success px-3">
-                 <i className="fa fa-shopping-cart mr-1" /> Add To Cart
+                  <i className="fa fa-shopping-cart mr-1" /> Add To Cart
                 </button>
-              </Link>             
+              </Link>
             </div>
           </div>
         </div>
@@ -220,14 +160,7 @@ export default function ProductDetailCpn() {
                 href="#tab-pane-2"
               >
                 Information
-              </a>
-              <a
-                className="nav-item nav-link text-dark"
-                data-toggle="tab"
-                href="#tab-pane-3"
-              >
-                Reviews (0)
-              </a>
+              </a>             
             </div>
             <div className="tab-content">
               <div className="tab-pane fade show active" id="tab-pane-1">
@@ -309,91 +242,7 @@ export default function ProductDetailCpn() {
                     </ul>
                   </div>
                 </div>
-              </div>
-              <div className="tab-pane fade" id="tab-pane-3">
-                <div className="row">
-                  <div className="col-md-6">
-                    <h4 className="mb-4">1 review for "Product Name"</h4>
-                    <div className="media mb-4">
-                      <img
-                        src="img/user.jpg"
-                        alt="Image"
-                        className="img-fluid mr-3 mt-1"
-                        style={{ width: 45 }}
-                      />
-                      <div className="media-body">
-                        <h6>
-                          John Doe
-                          <small>
-                            {" "}
-                            - <i>01 Jan 2045</i>
-                          </small>
-                        </h6>
-                        <div className="text-primary mb-2">
-                          <i className="fas fa-star" />
-                          <i className="fas fa-star" />
-                          <i className="fas fa-star" />
-                          <i className="fas fa-star-half-alt" />
-                          <i className="far fa-star" />
-                        </div>
-                        <p>
-                          Diam amet duo labore stet elitr ea clita ipsum, tempor
-                          labore accusam ipsum et no at. Kasd diam tempor rebum
-                          magna dolores sed sed eirmod ipsum.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <h4 className="mb-4">Leave a review</h4>
-                    <small>
-                      Your email address will not be published. Required fields
-                      are marked *
-                    </small>
-                    <div className="d-flex my-3">
-                      <p className="mb-0 mr-2">Your Rating * :</p>
-                      <div className="text-primary">
-                        <i className="far fa-star" />
-                        <i className="far fa-star" />
-                        <i className="far fa-star" />
-                        <i className="far fa-star" />
-                        <i className="far fa-star" />
-                      </div>
-                    </div>
-                    <form>
-                      <div className="form-group">
-                        <label htmlFor="message">Your Review *</label>
-                        <textarea
-                          id="message"
-                          cols={30}
-                          rows={5}
-                          className="form-control"
-                          defaultValue={""}
-                        />
-                      </div>
-                      <div className="form-group">
-                        <label htmlFor="name">Your Name *</label>
-                        <input type="text" className="form-control" id="name" />
-                      </div>
-                      <div className="form-group">
-                        <label htmlFor="email">Your Email *</label>
-                        <input
-                          type="email"
-                          className="form-control"
-                          id="email"
-                        />
-                      </div>
-                      <div className="form-group mb-0">
-                        <input
-                          type="submit"
-                          defaultValue="Leave Your Review"
-                          className="btn btn-primary px-3"
-                        />
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
+              </div>             
             </div>
           </div>
         </div>

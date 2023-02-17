@@ -16,7 +16,7 @@ export default function CartInfo() {
         </div>
       </form>
       <h5 className="section-title position-relative text-uppercase mb-3">
-        <span className="bg-secondary pr-3">Cart Summary</span>
+        <span className="pr-3">Cart Summary</span>
       </h5>
       <div className="bg-light p-30 mb-5">
         <div className="border-bottom pb-2">

@@ -18,7 +18,7 @@ export default function Cart() {
             </div>
             <input
               type="text"
-              className="form-control form-control-sm bg-secondary border-0 text-center"
+              className="form-control form-control-sm border-0 text-center"
               defaultValue={1}
             />
             <div className="input-group-btn">

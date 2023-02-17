@@ -148,7 +148,7 @@ useEffect(
                             
                             </div>
                             <div>
-                                <Button  className="text-center btn-primary btn-icon me-2 mt-lg-0 mt-md-0 mt-3" onClick={handleShow}>
+                                <Button  className="text-center btn-success btn-icon me-2 mt-lg-0 mt-md-0 mt-3" onClick={handleShow}>
                                     <i className="btn-inner">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
@@ -165,7 +165,7 @@ useEffect(
                                             <Form.Label>permission title</Form.Label>
                                             <Form.Control type="text" onChange={e => setName(e.target.value)} placeholder="Permission Title" />
                                         </Form.Group>
-                                        <Button variant="primary" onClick={
+                                        <Button variant="success" onClick={
                                           () =>{
                                             permissionpush()
                                             handleClose()
@@ -179,7 +179,7 @@ useEffect(
                                         </Button>
                                     </Modal.Body>
                                 </Modal>
-                                <Button  className="text-center btn-primary btn-icon mt-lg-0 mt-md-0 mt-3" onClick={handleShow1}>
+                                <Button  className="text-center btn-success btn-icon mt-lg-0 mt-md-0 mt-3" onClick={handleShow1}>
                                     <i className="btn-inner">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
@@ -207,7 +207,7 @@ useEffect(
                                             <Form.Check.Input type="radio"  name="customRadio0" id="automatically" defaultChecked/>{' '}
                                             <Form.Check.Label htmlFor="automatically" className="pl-2">no</Form.Check.Label>
                                         </Form.Check>
-                                        <Button variant="primary" onClick={
+                                        <Button variant="success" onClick={
                                           () =>{
                                             rolepush()
                                             handleClose1()
@@ -361,7 +361,7 @@ useEffect(
                                     </tbody>
                                 </table>
                                 <div className="text-center">
-                                <Button onClick={() => history.push('/dashboard/admin/admin')} type="button" variant="primary">Save</Button>
+                                <Button onClick={() => history.push('/dashboard/admin/admin')} type="button" variant="success">Save</Button>
                                 </div>
                             </div>
                         </Card.Body>
