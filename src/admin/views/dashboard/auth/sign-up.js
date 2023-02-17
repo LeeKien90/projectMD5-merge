@@ -45,7 +45,7 @@ const SignUp = () => {
                                     </Col>
                                     <Col lg="6">
                                        <Form.Group className="form-group">
-                                          <Form.Label htmlFor="last-name" className="">Last Name</Form.Label>
+                                          <Form.Label htmlFor="last-name" className="">User Name</Form.Label>
                                           <Form.Control type="text" className="" id="last-name" placeholder=" "/>
                                        </Form.Group>
                                     </Col>
@@ -81,11 +81,11 @@ const SignUp = () => {
                                     </Col>
                                  </Row>
                                  <div className="d-flex justify-content-center">
-                                    <Button onClick={() => history.push('/dashboard')} type="button" variant="primary">Sign Up</Button>
+                                    <Button onClick={() => history.push('/admin/dashboard')} type="button" variant="primary">Sign Up</Button>
                                  </div>
                                  <p className="text-center my-3">or sign in with other accounts?</p>
                                  <div className="d-flex justify-content-center">
-                                    <ListGroup as="ul" className="list-group-horizontal list-group-flush">
+                                    <ListGroup as="ul" className="list-group-horizontal list-group-flush login-logout">
                                        <ListGroup.Item as="li" className="list-group-item border-0 pb-0">
                                           <Link to="#"><Image src={facebook} alt="fb"/></Link>
                                        </ListGroup.Item>
@@ -101,7 +101,7 @@ const SignUp = () => {
                                     </ListGroup>
                                  </div>
                                  <p className="mt-3 text-center">
-                                    Already have an Account <Link to="/auth/sign-in" className="text-underline">Sign In</Link>
+                                    Already have an Account <Link to="/admin/auth/sign-in" className="text-underline">Sign In</Link>
                                  </p>
                               </Form>
                            </Card.Body>

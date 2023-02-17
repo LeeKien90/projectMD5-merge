@@ -59,7 +59,7 @@ const SignIn = () => {
                                  </div>
                                  <p className="text-center my-3">or sign in with other accounts?</p>
                                  <div className="d-flex justify-content-center">
-                                    <ListGroup as="ul" className="list-group-horizontal list-group-flush">
+                                    <ListGroup as="ul" className="list-group-horizontal list-group-flush login-logout">
                                        <ListGroup.Item as="li"  className="border-0 pb-0">
                                           <Link to="#"><Image src={facebook} alt="fb"/></Link>
                                        </ListGroup.Item>
@@ -75,7 +75,7 @@ const SignIn = () => {
                                     </ListGroup>
                                  </div>
                                  <p className="mt-3 text-center">
-                                    Don’t have an account? <Link to="/auth/sign-up" className="text-underline">Click here to sign up.</Link>
+                                    Don’t have an account? <Link to="/admin/auth/sign-up" className="text-underline">Click here to sign up.</Link>
                                  </p>
                               </Form>
                            </Card.Body>

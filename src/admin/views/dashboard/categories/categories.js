@@ -8,14 +8,12 @@ const Categories = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-
   const [show2, setShow2] = useState(false);
 
   const handleClose2 = () => setShow2(false);
   // const handleShow2 = () => setShow2(true);
 
   const [show3, setShow3] = useState(false);
-
 
   let history = useHistory();
 
@@ -113,73 +111,119 @@ const Categories = () => {
                 <h4 className="card-title mb-0">Categories</h4>
               </div>
               <div>
-                                <Button  className="text-center btn-primary btn-icon me-2 mt-lg-0 mt-md-0 mt-3" onClick={handleShow}>
-                                    <i className="btn-inner">
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                                        </svg>
-                                    </i>
-                                    <span>New Permission</span>
-                                </Button>
-                                <Modal show={show} onHide={handleClose}>
-                                    <Modal.Header closeButton>
-                                    <Modal.Title>Add new Categories</Modal.Title>
-                                    </Modal.Header>
-                                    <Modal.Body>
-                                        <Form.Group className="mb-3" controlId="formBasicPassword">
-                                            <Form.Label>Categories title</Form.Label>
-                                            <Form.Control type="text" onChange={e => setName(e.target.value)} placeholder="Permission Title" />
-                                        </Form.Group>
-                                        <Form.Group controlId="formBasicPassword">
-                                            <Form.Label >Status</Form.Label>
-                                        </Form.Group>
-                                        <Form.Check>
-                                            <Form.Check.Input type="radio"  name="customRadio0" id="automatically" defaultChecked/>{' '}
-                                            <Form.Check.Label htmlFor="automatically" className="pl-2">Action</Form.Check.Label>
-                                        </Form.Check>
-                                        <Form.Check className="mb-3">
-                                            <Form.Check.Input type="radio"  name="customRadio0" id="automatically" defaultChecked/>{' '}
-                                            <Form.Check.Label htmlFor="automatically" className="pl-2">Block</Form.Check.Label>
-                                        </Form.Check>
-                                        <Button variant="primary" onClick={
-                                          () =>{
-                                            permissionpush()
-                                            handleClose()
-                                          }
-                                        }
-                                        >
-                                            Save
-                                        </Button>{' '}
-                                        <Button variant="danger" onClick={handleClose}>
-                                            Cancel
-                                        </Button>
-                                    </Modal.Body>
-                                </Modal>
-                               
-                              
-                                <Modal show={show2}  onHide={handleClose2}>
-                                    <Modal.Header closeButton>
-                                        <Modal.Title>Edit permission</Modal.Title>
-                                    </Modal.Header>
-                                    <Modal.Body>
-                                    <Form.Group className="mb-3" controlId="formBasicPassword">
-                                                <Form.Label>Role</Form.Label>
-                                                <Form.Control type="text" defaultValue={editname}  onChange={e => setName(e.target.value)} placeholder="Permission Title" />
-                                        </Form.Group>
-                                        <div>
-                                            <div className="text-start mt-2 me-2">
-                                                <Button onClick={ 
-                                                    () =>{
-                                                        permissionupdate()
-                                                        handleClose2()
-                                                    }
-                                                } >Update</Button>{' '}
-                                                <Button  variant="danger" onClick={handleClose2} >Cancel</Button>
-                                            </div>
-                                        </div>
-                                    </Modal.Body>
-                                </Modal>
-                            </div>
+                <Button
+                  className="text-center btn-primary btn-icon me-2 mt-lg-0 mt-md-0 mt-3"
+                  onClick={handleShow}
+                >
+                  <i className="btn-inner">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                      />
+                    </svg>
+                  </i>
+                  <span>New Categories</span>
+                </Button>
+                <Modal show={show} onHide={handleClose}>
+                  <Modal.Header closeButton>
+                    <Modal.Title>Add new Categories</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                      <Form.Label>Categories Name</Form.Label>
+                      <Form.Control
+                        type="text"
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="Categories Name"
+                      />
+                    </Form.Group>
+                    <Form.Group controlId="formBasicPassword">
+                      <Form.Label>Status</Form.Label>
+                    </Form.Group>
+                    <Form.Check>
+                      <Form.Check.Input
+                        type="radio"
+                        name="customRadio0"
+                        id="automatically"
+                        defaultChecked
+                      />{" "}
+                      <Form.Check.Label
+                        htmlFor="automatically"
+                        className="pl-2"
+                      >
+                        Action
+                      </Form.Check.Label>
+                    </Form.Check>
+                    <Form.Check className="mb-3">
+                      <Form.Check.Input
+                        type="radio"
+                        name="customRadio0"
+                        id="automatically"
+                        defaultChecked
+                      />{" "}
+                      <Form.Check.Label
+                        htmlFor="automatically"
+                        className="pl-2"
+                      >
+                        Block
+                      </Form.Check.Label>
+                    </Form.Check>
+                    <Button
+                      variant="primary"
+                      onClick={() => {
+                        permissionpush();
+                        handleClose();
+                      }}
+                    >
+                      Save
+                    </Button>{" "}
+                    <Button variant="danger" onClick={handleClose}>
+                      Cancel
+                    </Button>
+                  </Modal.Body>
+                </Modal>
+
+                <Modal show={show2} onHide={handleClose2}>
+                  <Modal.Header closeButton>
+                    <Modal.Title>Edit Categories</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                      <Form.Label>Role</Form.Label>
+                      <Form.Control
+                        type="text"
+                        defaultValue={editname}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="Permission Title"
+                      />
+                    </Form.Group>
+                    <div>
+                      <div className="text-start mt-2 me-2">
+                        <Button
+                          onClick={() => {
+                            permissionupdate();
+                            handleClose2();
+                          }}
+                        >
+                          Update
+                        </Button>{" "}
+                        <Button variant="danger" onClick={handleClose2}>
+                          Cancel
+                        </Button>
+                      </div>
+                    </div>
+                  </Modal.Body>
+                </Modal>
+              </div>
             </Card.Header>
             <Card.Body>
               <div className="table-responsive">
@@ -190,7 +234,6 @@ const Categories = () => {
                       {role.map((item, index) => (
                         <th className="text-center" key={index}>
                           {item.name}
-                        
                         </th>
                       ))}
                     </tr>
@@ -243,14 +286,46 @@ const Categories = () => {
                                 </svg>
                               </span>
                             </Link>
-                            <Link className="btn btn-sm btn-icon text-danger "  data-bs-toggle="tooltip" title="Delete User" to="#"  onClick={() => {permissiondeleted(index)}}  >                                                                    
-                            <span className="btn-inner">
-                                 <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor">
-                                    <path d="M19.3248 9.46826C19.3248 9.46826 18.7818 16.2033 18.4668 19.0403C18.3168 20.3953 17.4798 21.1893 16.1088 21.2143C13.4998 21.2613 10.8878 21.2643 8.27979 21.2093C6.96079 21.1823 6.13779 20.3783 5.99079 19.0473C5.67379 16.1853 5.13379 9.46826 5.13379 9.46826" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
-                                    <path d="M20.708 6.23975H3.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
-                                    <path d="M17.4406 6.23973C16.6556 6.23973 15.9796 5.68473 15.8256 4.91573L15.5826 3.69973C15.4326 3.13873 14.9246 2.75073 14.3456 2.75073H10.1126C9.53358 2.75073 9.02558 3.13873 8.87558 3.69973L8.63258 4.91573C8.47858 5.68473 7.80258 6.23973 7.01758 6.23973" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
-                                  </svg>
-                                </span>
+                            <Link
+                              className="btn btn-sm btn-icon text-danger "
+                              data-bs-toggle="tooltip"
+                              title="Delete User"
+                              to="#"
+                              onClick={() => {
+                                permissiondeleted(index);
+                              }}
+                            >
+                              <span className="btn-inner">
+                                <svg
+                                  width="20"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  stroke="currentColor"
+                                >
+                                  <path
+                                    d="M19.3248 9.46826C19.3248 9.46826 18.7818 16.2033 18.4668 19.0403C18.3168 20.3953 17.4798 21.1893 16.1088 21.2143C13.4998 21.2613 10.8878 21.2643 8.27979 21.2093C6.96079 21.1823 6.13779 20.3783 5.99079 19.0473C5.67379 16.1853 5.13379 9.46826 5.13379 9.46826"
+                                    stroke="currentColor"
+                                    strokeWidth="1.5"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                  ></path>
+                                  <path
+                                    d="M20.708 6.23975H3.75"
+                                    stroke="currentColor"
+                                    strokeWidth="1.5"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                  ></path>
+                                  <path
+                                    d="M17.4406 6.23973C16.6556 6.23973 15.9796 5.68473 15.8256 4.91573L15.5826 3.69973C15.4326 3.13873 14.9246 2.75073 14.3456 2.75073H10.1126C9.53358 2.75073 9.02558 3.13873 8.87558 3.69973L8.63258 4.91573C8.47858 5.68473 7.80258 6.23973 7.01758 6.23973"
+                                    stroke="currentColor"
+                                    strokeWidth="1.5"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                  ></path>
+                                </svg>
+                              </span>
                             </Link>
                           </div>
                         </td>

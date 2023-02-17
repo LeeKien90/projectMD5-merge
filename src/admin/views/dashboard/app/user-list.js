@@ -17,10 +17,9 @@ const userlist = [
       name: 'Anna Sthesia',
       phone: '(760) 756 7568',
       email: 'annasthesia@gmail.com',
-      country: 'USA',
+      permission: 'admin',
       status: 'Active',
-      company: 'Acme Corporation',
-      joindate: '2019/12/01',
+      
       color: 'bg-primary'
    },
    {
@@ -28,89 +27,12 @@ const userlist = [
       name: 'Brock Lee',
       phone: '+62 5689 458 658',
       email: 'brocklee@gmail.com',
-      country: 'Indonesia',
+      permission: 'user',
       status: 'Active',
-      company: 'Soylent Corp',
-      joindate: '2019/12/01',
+     
       color: 'bg-primary'
    },
-   {
-      img: `${shap3}`,
-      name: 'Dan Druff',
-      phone: '+55 6523 456 856',
-      email: 'dandruff@gmail.com',
-      country: 'Brazil',
-      status: 'Pending',
-      company: 'Acme Corporation',
-      joindate: '2019/12/01',
-      color: 'bg-warning'
-   }, 
-   {
-      img: `${shap4}`,
-      name: 'Hans Olo',
-      phone: '+91 2586 253 125',
-      email: 'hansolo@gmail.com',
-      country: 'India',
-      status: 'Inactive',
-      company: 'Vehement Capital',
-      joindate: '2019/12/01', 
-      color: 'bg-danger'
-   },
-   {
-      img: `${shap5}`,
-      name: 'Lynn Guini',
-      phone: '+27 2563 456 589',
-      email: 'lynnguini@gmail.com',
-      country: 'Africa',
-      status: 'Active',
-      company: 'Massive Dynamic',
-      joindate: '2019/12/01',
-      color: 'bg-primary'
-   },
-   {
-      img: `${shap6}`,
-      name: 'Eric Shun',
-      phone: '+55 25685 256 589',
-      email: 'ericshun@gmail.com',
-      country: 'Brazil',
-      status: 'Pending',
-      company: 'Globex Corporation',
-      joindate: '2019/12/01',
-      color: 'bg-warning'
-   },
-   {
-      img: `${shap3}`,
-      name: 'aaronottix',
-      phone: '(760) 756 7568',
-      email: 'budwiser@ymail.com',
-      country: 'USA',
-      status: 'Hold',
-      company: 'Acme Corporation',
-      joindate: '2019/12/01',
-      color: 'bg-info'
-   },
-   {
-      img: `${shap5}`,
-      name: 'Marge Arita',
-      phone: '+27 5625 456 589',
-      email: 'margearita@gmail.com',
-      country: 'Africa',
-      status: 'Complite',
-      company: 'Vehement Capital',
-      joindate: '2019/12/01',
-      color: 'bg-success'
-   },
-   {
-      img: `${shap2}`,
-      name: 'Bill Dabear',
-      phone: '+55 2563 456 589',
-      email: 'billdabear@gmail.com',
-      country: 'Brazil',
-      status: 'Active',
-      company: 'Massive Dynamic',
-      joindate: '2019/12/01',
-      color: 'bg-primary'
-   }
+  
 ]
 
 const UserList =() =>{
@@ -130,14 +52,12 @@ const UserList =() =>{
                         <table id="user-list-table" className="table table-striped" role="grid" data-toggle="data-table">
                            <thead>
                               <tr className="ligth">
-                                 <th>Profile</th>
+                                 <th>Avatar</th>
                                  <th>Name</th>
-                                 <th>Contact</th>
-                                 <th>Email</th>
-                                 <th>Country</th>
-                                 <th>Status</th>
-                                 <th>Company</th>
-                                 <th>Join Date</th>
+                                 <th>Phone</th>
+                                 <th>Email</th>                                 
+                                 <th>Permission</th>
+                                 <th>Status</th>                                 
                                  <th min-width= "100px">Action</th>
                               </tr>
                            </thead>
@@ -149,10 +69,8 @@ const UserList =() =>{
                                  <td>{item.name}</td>
                                  <td>{item.phone}</td>
                                  <td>{item.email}</td>
-                                 <td>{item.country}</td>
-                                 <td><span className={`badge ${item.color}`}>{item.status}</span></td>
-                                 <td>{item.company}</td>
-                                 <td>{item.joindate}</td>
+                                 <td>{item.permission}</td>
+                                 <td><span className={`badge ${item.color}`}>{item.status}</span></td>                                 
                                  <td>
                                     <div className="flex align-items-center list-user-action">
                                       

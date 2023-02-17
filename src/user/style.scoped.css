@@ -10131,3 +10131,7 @@ h6 {
 .my-control-lable.custom-control-label::before, .my-control-lable.custom-control-label::after{
   left: -25px;
 }
+
+.login-logout.list-group {
+  flex-direction: row !important;
+}

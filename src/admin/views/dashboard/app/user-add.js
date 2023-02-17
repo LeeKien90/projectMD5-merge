@@ -49,34 +49,7 @@ const UserAdd =() =>{
                                     <span>allowed</span>
                                  </div>
                               </div>
-                           </Form.Group>
-                           <Form.Group className="form-group">
-                              <Form.Label>User Role:</Form.Label>
-                              <select name="type" className="selectpicker form-control" data-style="py-0">
-                                 <option>Select</option>
-                                 <option>Web Designer</option>
-                                 <option>Web Developer</option>
-                                 <option>Tester</option>
-                                 <option>Php Developer</option>
-                                 <option>Ios Developer </option>
-                              </select>
-                           </Form.Group>
-                           <Form.Group className="form-group">
-                              <Form.Label htmlFor="furl">Facebook Url:</Form.Label>
-                              <Form.Control type="text"  id="furl" placeholder="Facebook Url"/>
-                           </Form.Group>
-                           <Form.Group className="form-group">
-                              <Form.Label htmlFor="turl">Twitter Url:</Form.Label>
-                              <Form.Control type="text"  id="turl" placeholder="Twitter Url"/>
-                           </Form.Group>
-                           <Form.Group className="form-group">
-                              <Form.Label htmlFor="instaurl">Instagram Url:</Form.Label>
-                              <Form.Control type="text"  id="instaurl" placeholder="Instagram Url"/>
-                           </Form.Group>
-                           <Form.Group className="mb-0 form-group">
-                              <Form.Label htmlFor="lurl">Linkedin Url:</Form.Label>
-                              <Form.Control type="text"  id="lurl" placeholder="Linkedin Url"/>
-                           </Form.Group>
+                           </Form.Group>                          
                         </Form>
                      </Card.Body>
                   </Card>
@@ -93,64 +66,26 @@ const UserAdd =() =>{
                            <form>
                               <div className="row">
                                  <Form.Group className="col-md-6 form-group">
-                                    <Form.Label htmlFor="fname">First Name:</Form.Label>
+                                    <Form.Label htmlFor="fname">Full Name:</Form.Label>
                                     <Form.Control type="text"  id="fname" placeholder="First Name"/>
                                  </Form.Group>
                                  <Form.Group className="col-md-6 form-group">
-                                    <Form.Label htmlFor="lname">Last Name:</Form.Label>
+                                    <Form.Label htmlFor="lname">User Name:</Form.Label>
                                     <Form.Control type="text"  id="lname" placeholder="Last Name"/>
                                  </Form.Group>
-                                 <Form.Group className="col-md-6 form-group">
-                                    <Form.Label htmlFor="add1">Street Address 1:</Form.Label>
-                                    <Form.Control type="text"  id="add1" placeholder="Street Address 1"/>
-                                 </Form.Group>
-                                 <Form.Group className="col-md-6 form-group">
-                                    <Form.Label htmlFor="add2">Street Address 2:</Form.Label>
-                                    <Form.Control type="text"  id="add2" placeholder="Street Address 2"/>
-                                 </Form.Group>
-                                 <Form.Group className="col-md-12 form-group">
-                                    <Form.Label htmlFor="cname">Company Name:</Form.Label>
-                                    <Form.Control type="text"  id="cname" placeholder="Company Name"/>
-                                 </Form.Group>
-                                 <Form.Group className="col-sm-12 form-group">
-                                    <Form.Label>Country:</Form.Label>
-                                    <select name="type" className="selectpicker form-control" data-style="py-0">
-                                       <option>Select Country</option>
-                                       <option>Caneda</option>
-                                       <option>Noida</option>
-                                       <option >USA</option>
-                                       <option>India</option>
-                                       <option>Africa</option>
-                                    </select>
-                                 </Form.Group>
+                                 
                                  <Form.Group className="col-md-6  form-group">
                                     <Form.Label htmlFor="mobno">Mobile Number:</Form.Label>
                                     <Form.Control type="text"  id="mobno" placeholder="Mobile Number"/>
-                                 </Form.Group>
-                                 <Form.Group className="col-md-6  form-group">
-                                    <Form.Label htmlFor="altconno">Alternate Contact:</Form.Label>
-                                    <Form.Control type="text"  id="altconno" placeholder="Alternate Contact"/>
-                                 </Form.Group>
+                                 </Form.Group>                                 
                                  <Form.Group className="col-md-6  form-group">
                                     <Form.Label htmlFor="email">Email:</Form.Label>
                                     <Form.Control type="email"  id="email" placeholder="Email"/>
-                                 </Form.Group>
-                                 <Form.Group className="col-md-6 form-group">
-                                    <Form.Label htmlFor="pno">Pin Code:</Form.Label>
-                                    <Form.Control type="text"  id="pno" placeholder="Pin Code"/>
-                                 </Form.Group>
-                                 <Form.Group className="col-md-12 form-group">
-                                    <Form.Label htmlFor="city">Town/City:</Form.Label>
-                                    <Form.Control type="text"  id="city" placeholder="Town/City"/>
-                                 </Form.Group>
+                                 </Form.Group>                                 
                               </div>
                               <hr/>
                               <h5 className="mb-3">Security</h5>
-                              <div className="row">
-                                 <Form.Group className="col-md-12 form-group">
-                                    <Form.Label htmlFor="uname">User Name:</Form.Label>
-                                    <Form.Control type="text"  id="uname" placeholder="User Name"/>
-                                 </Form.Group>
+                              <div className="row">                                 
                                  <Form.Group className="col-md-6 form-group">
                                     <Form.Label htmlFor="pass">Password:</Form.Label>
                                     <Form.Control type="password"  id="pass" placeholder="Password"/>

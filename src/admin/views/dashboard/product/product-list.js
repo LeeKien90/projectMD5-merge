@@ -15,102 +15,24 @@ const userlist = [
    {
       img: `${shap1}`,
       name: 'Anna Sthesia',
-      phone: '(760) 756 7568',
-      email: 'annasthesia@gmail.com',
-      country: 'USA',
+      price: '123',
+      quantity: '12',
+      size: 'XS',
       status: 'Active',
-      company: 'Acme Corporation',
       joindate: '2019/12/01',
       color: 'bg-primary'
    },
    {
       img: `${shap2}`,
       name: 'Brock Lee',
-      phone: '+62 5689 458 658',
-      email: 'brocklee@gmail.com',
-      country: 'Indonesia',
+      price: '123',
+      quantity: '12',
+      size: 'XS',
       status: 'Active',
-      company: 'Soylent Corp',
       joindate: '2019/12/01',
       color: 'bg-primary'
    },
-   {
-      img: `${shap3}`,
-      name: 'Dan Druff',
-      phone: '+55 6523 456 856',
-      email: 'dandruff@gmail.com',
-      country: 'Brazil',
-      status: 'Pending',
-      company: 'Acme Corporation',
-      joindate: '2019/12/01',
-      color: 'bg-warning'
-   }, 
-   {
-      img: `${shap4}`,
-      name: 'Hans Olo',
-      phone: '+91 2586 253 125',
-      email: 'hansolo@gmail.com',
-      country: 'India',
-      status: 'Inactive',
-      company: 'Vehement Capital',
-      joindate: '2019/12/01', 
-      color: 'bg-danger'
-   },
-   {
-      img: `${shap5}`,
-      name: 'Lynn Guini',
-      phone: '+27 2563 456 589',
-      email: 'lynnguini@gmail.com',
-      country: 'Africa',
-      status: 'Active',
-      company: 'Massive Dynamic',
-      joindate: '2019/12/01',
-      color: 'bg-primary'
-   },
-   {
-      img: `${shap6}`,
-      name: 'Eric Shun',
-      phone: '+55 25685 256 589',
-      email: 'ericshun@gmail.com',
-      country: 'Brazil',
-      status: 'Pending',
-      company: 'Globex Corporation',
-      joindate: '2019/12/01',
-      color: 'bg-warning'
-   },
-   {
-      img: `${shap3}`,
-      name: 'aaronottix',
-      phone: '(760) 756 7568',
-      email: 'budwiser@ymail.com',
-      country: 'USA',
-      status: 'Hold',
-      company: 'Acme Corporation',
-      joindate: '2019/12/01',
-      color: 'bg-info'
-   },
-   {
-      img: `${shap5}`,
-      name: 'Marge Arita',
-      phone: '+27 5625 456 589',
-      email: 'margearita@gmail.com',
-      country: 'Africa',
-      status: 'Complite',
-      company: 'Vehement Capital',
-      joindate: '2019/12/01',
-      color: 'bg-success'
-   },
-   {
-      img: `${shap2}`,
-      name: 'Bill Dabear',
-      phone: '+55 2563 456 589',
-      email: 'billdabear@gmail.com',
-      country: 'Brazil',
-      status: 'Active',
-      company: 'Massive Dynamic',
-      joindate: '2019/12/01',
-      color: 'bg-primary'
-   }
+  
 ]
 
 const ProductList =() =>{
@@ -122,7 +44,7 @@ const ProductList =() =>{
                <Card>
                   <Card.Header className="d-flex justify-content-between">
                      <div className="header-title">
-                        <h4 className="card-title">User List</h4>
+                        <h4 className="card-title">Product List</h4>
                      </div>
                   </Card.Header>
                   <Card.Body className="px-0">
@@ -130,13 +52,12 @@ const ProductList =() =>{
                         <table id="user-list-table" className="table table-striped" role="grid" data-toggle="data-table">
                            <thead>
                               <tr className="ligth">
-                                 <th>Profile</th>
+                                 <th>Image</th>
                                  <th>Name</th>
-                                 <th>Contact</th>
-                                 <th>Email</th>
-                                 <th>Country</th>
-                                 <th>Status</th>
-                                 <th>Company</th>
+                                 <th>Price</th>
+                                 <th>Quantity</th>
+                                 <th>Size</th>
+                                 <th>Status</th>                                 
                                  <th>Join Date</th>
                                  <th min-width= "100px">Action</th>
                               </tr>
@@ -147,24 +68,13 @@ const ProductList =() =>{
                               <tr key={idx}>
                                  <td className="text-center"><Image className="bg-soft-primary rounded img-fluid avatar-40 me-3" src={item.img} alt="profile"/></td>
                                  <td>{item.name}</td>
-                                 <td>{item.phone}</td>
-                                 <td>{item.email}</td>
-                                 <td>{item.country}</td>
-                                 <td><span className={`badge ${item.color}`}>{item.status}</span></td>
-                                 <td>{item.company}</td>
+                                 <td>{item.price}</td>
+                                 <td>{item.quantity}</td>
+                                 <td>{item.size}</td>
+                                 <td><span className={`badge ${item.color}`}>{item.status}</span></td>                                 
                                  <td>{item.joindate}</td>
                                  <td>
-                                    <div className="flex align-items-center list-user-action">
-                                       <Link className="btn btn-sm btn-icon btn-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add" to="#">
-                                          <span className="btn-inner">
-                                             <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" >
-                                                <path fillRule="evenodd" clipRule="evenodd" d="M9.87651 15.2063C6.03251 15.2063 2.74951 15.7873 2.74951 18.1153C2.74951 20.4433 6.01251 21.0453 9.87651 21.0453C13.7215 21.0453 17.0035 20.4633 17.0035 18.1363C17.0035 15.8093 13.7415 15.2063 9.87651 15.2063Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
-                                                <path fillRule="evenodd" clipRule="evenodd" d="M9.8766 11.886C12.3996 11.886 14.4446 9.841 14.4446 7.318C14.4446 4.795 12.3996 2.75 9.8766 2.75C7.3546 2.75 5.3096 4.795 5.3096 7.318C5.3006 9.832 7.3306 11.877 9.8456 11.886H9.8766Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
-                                                <path d="M19.2036 8.66919V12.6792" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
-                                                <path d="M21.2497 10.6741H17.1597" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
-                                             </svg>                                        
-                                          </span>
-                                       </Link>{' '}
+                                    <div className="flex align-items-center list-user-action">                                       
                                        <Link className="btn btn-sm btn-icon btn-warning" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" to="#">
                                           <span className="btn-inner">
                                              <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
