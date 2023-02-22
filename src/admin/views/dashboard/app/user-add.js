@@ -67,11 +67,11 @@ const UserAdd =() =>{
                               <div className="row">
                                  <Form.Group className="col-md-6 form-group">
                                     <Form.Label htmlFor="fname">Full Name:</Form.Label>
-                                    <Form.Control type="text"  id="fname" placeholder="First Name"/>
+                                    <Form.Control type="text"  id="fname" placeholder="Full Name"/>
                                  </Form.Group>
                                  <Form.Group className="col-md-6 form-group">
                                     <Form.Label htmlFor="lname">User Name:</Form.Label>
-                                    <Form.Control type="text"  id="lname" placeholder="Last Name"/>
+                                    <Form.Control type="text"  id="lname" placeholder="User Name"/>
                                  </Form.Group>
                                  
                                  <Form.Group className="col-md-6  form-group">

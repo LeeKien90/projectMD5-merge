@@ -59,8 +59,7 @@ const UserProfile =() =>{
                                     <Image className="theme-color-pink-img img-fluid rounded-pill avatar-100" src={avatars44} alt="profile-pic"/>
                                  </div>
                                  <div className="d-flex flex-wrap align-items-center mb-3 mb-sm-0">
-                                    <h4 className="me-2 h4">Austin Robertson</h4>
-                                    <span> - Web Developer</span>
+                                    <h4 className="me-2 h4">Austin Robertson</h4>                                    
                                  </div>
                               </div>
                               <Nav as="ul" className="d-flex nav-pills mb-0 text-center profile-tab" data-toggle="slider-tab" id="profile-pills-tab" role="tablist">

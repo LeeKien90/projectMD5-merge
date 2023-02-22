@@ -2,105 +2,60 @@ import React, { useState, useEffect } from "react";
 import { Row, Col, Modal, Form, Button } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import Card from "../../../components/Card";
+import "bootstrap/dist/css/bootstrap.min.css";
+import {
+  addDataCategories,
+  deleteDataCategories,
+  updateDataCategories,
+} from "../../../../service/api";
+import ListCategories from "./listCategories";
+
 const Categories = () => {
+  const [newCategories, setNewCategories] = useState({
+    id: "",
+    categoriesName: "",
+    categoriesStatus: "true",
+  });
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
   const [show2, setShow2] = useState(false);
-
   const handleClose2 = () => setShow2(false);
-  // const handleShow2 = () => setShow2(true);
-
-  const [show3, setShow3] = useState(false);
-
-  let history = useHistory();
-
-  //permission
-  const [permission, setPermission] = useState([
-    {
-      name: "Role",
-      status: false,
-    },
-    {
-      name: "Role Add",
-      status: true,
-    },
-    {
-      name: "Role List",
-    },
-    {
-      name: "Permission",
-    },
-    {
-      name: "Permission Add",
-    },
-    {
-      name: "Permission List",
-    },
-  ]);
-  const [name, setName] = useState("");
-  const [editname, setEditname] = useState("");
-  const [permissionupdateid, setUpdate] = useState("");
-  function permissionpush() {
-    setPermission([...permission, { name: name }]);
-    permission.push({
-      name: name,
+  const [show3, setShow3] = useState(true);
+  const [show4, setShow4] = useState(true);
+  const [catagoryUpdate, setcategoryUpdate] = useState({
+    id: "",
+    categoriesName: "",
+    categoriesStatus: "",
+  });
+  console.log(catagoryUpdate);
+  function createCategories() {
+    addDataCategories(newCategories);
+    setShow3(!show3);
+    setNewCategories({
+      id: "",
+      categoriesName: "",
+      categoriesStatus: "true",
     });
   }
-
-  function permissiondeleted(index) {
-    permission.splice(index, 1);
-  }
-  function permissionedit(permissionname, openmodal, permissionid) {
-    setShow2(openmodal);
-    setEditname(permissionname);
-    setUpdate(permissionid);
-  }
-  function permissionupdate() {
-    permission[permissionupdateid].name = name;
-  }
-  useEffect(() => {
-    return permission;
-  }, [permission, name]);
-
-  //role
-  const [role, setRole] = useState([
-    {
-      name: "Hoạt động",
-      status: true,
-    },
-    {
-      name: "Không hoạt động",
-      status: false,
-    },
-  ]);
-  const [name1, setName1] = useState("");
-  const [roleeditname, setRolename] = useState("");
-  const [roleupdateid, setUpdate1] = useState("");
-
-  function rolepush() {
-    setRole([...role, { name: name1 }]);
-    role.push({
-      name: name1,
+  const categoriesDeleted = (id) => {
+    deleteDataCategories(id).then(() => {
+      setShow4(!show4);
     });
+  };
+  const categoriesUpdate = () => {
+    updateDataCategories(catagoryUpdate.id, catagoryUpdate).then(() => {
+      setShow2(!show2);
+      setShow4(!show4);
+    });
+  };
+  function editCategories(cat) {
+    setcategoryUpdate(cat);
+    setShow2(!show2);
   }
 
-  function roledeleted(index) {
-    role.splice(index, 1);
-  }
-  function roleedit(rolename, openmodal, roleid) {
-    setShow3(openmodal);
-    setRolename(rolename);
-    setUpdate1(roleid);
-  }
-  function roleupdate() {
-    role[roleupdateid].name = name1;
-  }
-  useEffect(() => {
-    return role;
-  }, [role, name1]);
   return (
     <>
       <Row>
@@ -141,8 +96,15 @@ const Categories = () => {
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                       <Form.Label>Categories Name</Form.Label>
                       <Form.Control
+                        value={newCategories.categoriesName}
                         type="text"
-                        onChange={(e) => setName(e.target.value)}
+                        name="categoriesName"
+                        onChange={(e) =>
+                          setNewCategories({
+                            ...newCategories,
+                            [e.target.name]: e.target.value,
+                          })
+                        }
                         placeholder="Categories Name"
                       />
                     </Form.Group>
@@ -151,10 +113,17 @@ const Categories = () => {
                     </Form.Group>
                     <Form.Check>
                       <Form.Check.Input
+                        value="true"
                         type="radio"
-                        name="customRadio0"
+                        name="categoriesStatus"
                         id="automatically"
-                        defaultChecked
+                        checked={newCategories.categoriesStatus === "true"}
+                        onChange={(e) =>
+                          setNewCategories({
+                            ...newCategories,
+                            [e.target.name]: "true",
+                          })
+                        }
                       />{" "}
                       <Form.Check.Label
                         htmlFor="automatically"
@@ -165,10 +134,17 @@ const Categories = () => {
                     </Form.Check>
                     <Form.Check className="mb-3">
                       <Form.Check.Input
+                        value="false"
                         type="radio"
-                        name="customRadio0"
+                        name="categoriesStatus"
                         id="automatically"
-                        defaultChecked
+                        checked={newCategories.categoriesStatus !== "true"}
+                        onChange={(e) =>
+                          setNewCategories({
+                            ...newCategories,
+                            [e.target.name]: "false",
+                          })
+                        }
                       />{" "}
                       <Form.Check.Label
                         htmlFor="automatically"
@@ -180,7 +156,7 @@ const Categories = () => {
                     <Button
                       variant="primary"
                       onClick={() => {
-                        permissionpush();
+                        createCategories();
                         handleClose();
                       }}
                     >
@@ -191,31 +167,73 @@ const Categories = () => {
                     </Button>
                   </Modal.Body>
                 </Modal>
-
                 <Modal show={show2} onHide={handleClose2}>
                   <Modal.Header closeButton>
                     <Modal.Title>Edit Categories</Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
-                      <Form.Label>Role</Form.Label>
+                      <Form.Label>Categories Name</Form.Label>
                       <Form.Control
                         type="text"
-                        defaultValue={editname}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder="Permission Title"
+                        defaultValue={catagoryUpdate.categoriesName}
+                        onChange={(e) =>
+                          setcategoryUpdate({
+                            ...catagoryUpdate,
+                            [e.target.name]: e.target.value,
+                          })
+                        }
+                        placeholder="Categories Name"
                       />
                     </Form.Group>
+                    <Form.Group controlId="formBasicPassword">
+                      <Form.Label>Status</Form.Label>
+                    </Form.Group>
+                    <Form.Check>
+                      <Form.Check.Input
+                        value="true"
+                        type="radio"
+                        name="categoriesStatus"
+                        id="automatically"
+                        checked={catagoryUpdate.categoriesStatus === "true"}
+                        onChange={(e) =>
+                          setcategoryUpdate({
+                            ...catagoryUpdate,
+                            [e.target.name]: "true",
+                          })
+                        }
+                      />{" "}
+                      <Form.Check.Label
+                        htmlFor="automatically"
+                        className="pl-2"
+                      >
+                        Action
+                      </Form.Check.Label>
+                    </Form.Check>
+                    <Form.Check className="mb-3">
+                      <Form.Check.Input
+                        value="false"
+                        type="radio"
+                        name="categoriesStatus"
+                        id="automatically"
+                        checked={catagoryUpdate.categoriesStatus !== "true"}
+                        onChange={(e) =>
+                          setcategoryUpdate({
+                            ...catagoryUpdate,
+                            [e.target.name]: "false",
+                          })
+                        }
+                      />{" "}
+                      <Form.Check.Label
+                        htmlFor="automatically"
+                        className="pl-2"
+                      >
+                        Block
+                      </Form.Check.Label>
+                    </Form.Check>
                     <div>
                       <div className="text-start mt-2 me-2">
-                        <Button
-                          onClick={() => {
-                            permissionupdate();
-                            handleClose2();
-                          }}
-                        >
-                          Update
-                        </Button>{" "}
+                        <Button onClick={categoriesUpdate}>Update</Button>{" "}
                         <Button variant="danger" onClick={handleClose2}>
                           Cancel
                         </Button>
@@ -225,143 +243,12 @@ const Categories = () => {
                 </Modal>
               </div>
             </Card.Header>
-            <Card.Body>
-              <div className="table-responsive">
-                <table className="table table-bordered">
-                  <thead>
-                    <tr>
-                      <th></th>
-                      {role.map((item, index) => (
-                        <th className="text-center" key={index}>
-                          {item.name}
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {permission.map((item, index) => (
-                      <tr className="" key={index}>
-                        <td className="">
-                          {item.name}
-                          <div style={{ float: "right" }}>
-                            <Link
-                              className="btn btn-sm btn-icon text-primary flex-end"
-                              data-bs-toggle="tooltip"
-                              title="Edit User"
-                              to="#"
-                              onClick={() => {
-                                permissionedit(item.name, true, index);
-                              }}
-                            >
-                              <span className="btn-inner">
-                                <svg
-                                  width="20"
-                                  viewBox="0 0 24 24"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <path
-                                    d="M11.4925 2.78906H7.75349C4.67849 2.78906 2.75049 4.96606 2.75049 8.04806V16.3621C2.75049 19.4441 4.66949 21.6211 7.75349 21.6211H16.5775C19.6625 21.6211 21.5815 19.4441 21.5815 16.3621V12.3341"
-                                    stroke="currentColor"
-                                    strokeWidth="1.5"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                  ></path>
-                                  <path
-                                    fillRule="evenodd"
-                                    clipRule="evenodd"
-                                    d="M8.82812 10.921L16.3011 3.44799C17.2321 2.51799 18.7411 2.51799 19.6721 3.44799L20.8891 4.66499C21.8201 5.59599 21.8201 7.10599 20.8891 8.03599L13.3801 15.545C12.9731 15.952 12.4211 16.181 11.8451 16.181H8.09912L8.19312 12.401C8.20712 11.845 8.43412 11.315 8.82812 10.921Z"
-                                    stroke="currentColor"
-                                    strokeWidth="1.5"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                  ></path>
-                                  <path
-                                    d="M15.1655 4.60254L19.7315 9.16854"
-                                    stroke="currentColor"
-                                    strokeWidth="1.5"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                  ></path>
-                                </svg>
-                              </span>
-                            </Link>
-                            <Link
-                              className="btn btn-sm btn-icon text-danger "
-                              data-bs-toggle="tooltip"
-                              title="Delete User"
-                              to="#"
-                              onClick={() => {
-                                permissiondeleted(index);
-                              }}
-                            >
-                              <span className="btn-inner">
-                                <svg
-                                  width="20"
-                                  viewBox="0 0 24 24"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  stroke="currentColor"
-                                >
-                                  <path
-                                    d="M19.3248 9.46826C19.3248 9.46826 18.7818 16.2033 18.4668 19.0403C18.3168 20.3953 17.4798 21.1893 16.1088 21.2143C13.4998 21.2613 10.8878 21.2643 8.27979 21.2093C6.96079 21.1823 6.13779 20.3783 5.99079 19.0473C5.67379 16.1853 5.13379 9.46826 5.13379 9.46826"
-                                    stroke="currentColor"
-                                    strokeWidth="1.5"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                  ></path>
-                                  <path
-                                    d="M20.708 6.23975H3.75"
-                                    stroke="currentColor"
-                                    strokeWidth="1.5"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                  ></path>
-                                  <path
-                                    d="M17.4406 6.23973C16.6556 6.23973 15.9796 5.68473 15.8256 4.91573L15.5826 3.69973C15.4326 3.13873 14.9246 2.75073 14.3456 2.75073H10.1126C9.53358 2.75073 9.02558 3.13873 8.87558 3.69973L8.63258 4.91573C8.47858 5.68473 7.80258 6.23973 7.01758 6.23973"
-                                    stroke="currentColor"
-                                    strokeWidth="1.5"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                  ></path>
-                                </svg>
-                              </span>
-                            </Link>
-                          </div>
-                        </td>
-                        {role.map((item1, index) => (
-                          <td className="text-center" key={index}>
-                            {item1.status && item.status === true ? (
-                              <input
-                                className="form-check-input"
-                                type="checkbox"
-                                defaultChecked
-                              />
-                            ) : (
-                              <input
-                                className="form-check-input"
-                                type="checkbox"
-                              />
-                            )}
-                          </td>
-                        ))}
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-                <div className="text-center">
-                  <Button
-                    onClick={() =>
-                      history.push("/dashboard/categories/categories")
-                    }
-                    type="button"
-                    variant="primary"
-                  >
-                    Save
-                  </Button>
-                </div>
-              </div>
-            </Card.Body>
+            <ListCategories
+              show4={show4}
+              show3={show3}
+              categoriesDeleted={categoriesDeleted}
+              editCategories={editCategories}
+            ></ListCategories>
           </Card>
         </Col>
       </Row>
