@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "../../../components/Card";
 import { getDataCategories } from "../../../../service/api";
 import { Link } from "react-router-dom";
@@ -92,7 +92,7 @@ export default function ListCategories({
                       <Link
                         className="btn btn-sm btn-icon text-danger "
                         data-bs-toggle="tooltip"
-                        title="Delete User"
+                        title="Delete Categories"
                         to="#"
                         onClick={() => {
                           categoriesDeleted(cat.id);

@@ -4,9 +4,58 @@ import Card from "../../../components/Card";
 import { Link } from "react-router-dom";
 // img
 import avatars1 from "../../../assets/images/avatars/01.png";
-import Description from "./Description";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+
+import { useState } from "react";
+import { useEffect } from "react";
+import {
+  getDataCategories,
+  getDataColor,
+  addDataProduct,
+} from "../../../../service/api";
 
 const ProductAdd = () => {
+  const [listCastegories, setListCategories] = useState([]);
+  const [listColor, setListColor] = useState([]);
+  const [call, setCall] = useState(true);
+  const [ckedit, setCkedit] = useState("");
+  console.log(ckedit);
+  const [product, setProduct] = useState({
+    categories: "",
+    productName: "",
+    price: "",
+    quantity: "",
+    description: "",
+    imageProduct: "",
+    color: "",
+    status: "",
+    id: "",
+  });
+
+  const createProduct = () => {
+    product.description = ckedit.slice(4, ckedit.length - 4);
+    console.log("des", product);
+    addDataProduct(product);
+    setCall(call);
+  };
+
+  function handleChange() {
+    return (e) => setProduct({ ...product, [e.target.name]: e.target.value });
+  }
+
+  useEffect(() => {
+    getDataCategories().then((res) => {
+      setListCategories(res.data);
+    });
+  }, []);
+
+  useEffect(() => {
+    getDataColor().then((res) => {
+      setListColor(res.data);
+    });
+  }, []);
+
   return (
     <>
       <div>
@@ -44,6 +93,9 @@ const ProductAdd = () => {
                           className="file-upload"
                           type="file"
                           accept="image/*"
+                          value={product.imageProduct}
+                          name="imageProduct"
+                          onChange={handleChange()}
                         />
                       </div>
                     </div>
@@ -58,16 +110,16 @@ const ProductAdd = () => {
                   <Form.Group className="form-group">
                     <Form.Label>Categories:</Form.Label>
                     <select
-                      name="type"
                       className="selectpicker form-control"
                       data-style="py-0"
+                      value={product.categories}
+                      name="categories"
+                      onChange={handleChange()}
                     >
                       <option>Select</option>
-                      <option>Web Designer</option>
-                      <option>Web Developer</option>
-                      <option>Tester</option>
-                      <option>Php Developer</option>
-                      <option>Ios Developer </option>
+                      {listCastegories.map((cat) => (
+                        <option>{cat.categoriesName}</option>
+                      ))}
                     </select>
                   </Form.Group>
                 </Form>
@@ -86,16 +138,11 @@ const ProductAdd = () => {
                   <form>
                     <div className="row">
                       <Form.Group className="col-md-6 form-group">
-                        <Form.Label htmlFor="fname">Product ID:</Form.Label>
-                        <Form.Control
-                          type="text"
-                          id="fname"
-                          placeholder="Product ID"
-                        />
-                      </Form.Group>
-                      <Form.Group className="col-md-6 form-group">
                         <Form.Label htmlFor="lname">Product Name:</Form.Label>
                         <Form.Control
+                          value={product.productName}
+                          name="productName"
+                          onChange={handleChange()}
                           type="text"
                           id="lname"
                           placeholder="Product Name"
@@ -107,6 +154,9 @@ const ProductAdd = () => {
                           type="text"
                           id="add1"
                           placeholder="Price"
+                          value={product.price}
+                          name="price"
+                          onChange={handleChange()}
                         />
                       </Form.Group>
                       <Form.Group className="col-md-6 form-group">
@@ -115,31 +165,59 @@ const ProductAdd = () => {
                           type="text"
                           id="add2"
                           placeholder="Quantity"
+                          value={product.quantity}
+                          name="quantity"
+                          onChange={handleChange()}
                         />
+                      </Form.Group>
+                      <Form.Group className="col-md-6 form-group">
+                        <Form.Label htmlFor="fname">Status:</Form.Label>
+                        <select
+                          name="status"
+                          className="selectpicker form-control"
+                          data-style="py-0"
+                          value={product.status}
+                          onChange={handleChange()}
+                        >
+                          <option>Select Status</option>
+                          <option>Hoạt động</option>
+                          <option>Không Hoạt động</option>
+                        </select>
                       </Form.Group>
                       <Form.Group className="col-md-12 form-group">
                         <Form.Label htmlFor="cname">Descriptions:</Form.Label>
-                        <Description />                      
+                        <CKEditor
+                          editor={ClassicEditor}
+                          onChange={(event, editor) => {
+                            setCkedit(editor.getData());
+                          }}
+                        />
                       </Form.Group>
                       <Form.Group className="col-sm-12 form-group">
-                        <Form.Label>Size:</Form.Label>
+                        <Form.Label>Color:</Form.Label>
                         <select
-                          name="type"
+                          name="color"
                           className="selectpicker form-control"
                           data-style="py-0"
+                          value={product.color}
+                          onChange={handleChange()}
                         >
-                          <option>Select Size</option>
-                          <option>Caneda</option>
-                          <option>Noida</option>
-                          <option>USA</option>
-                          <option>India</option>
-                          <option>Africa</option>
+                          <option>Select Color</option>
+                          {listColor.map((c) => (
+                            <option>{c.colorName}</option>
+                          ))}
                         </select>
                       </Form.Group>
                     </div>
                     <hr />
                     <div className="text-center">
-                      <Button type="button" variant="btn btn-success">
+                      <Button
+                        type="button"
+                        variant="btn btn-success"
+                        onClick={() => {
+                          createProduct();
+                        }}
+                      >
                         Add New Product
                       </Button>
                     </div>

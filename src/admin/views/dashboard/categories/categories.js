@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Row, Col, Modal, Form, Button } from "react-bootstrap";
-import { Link, useHistory } from "react-router-dom";
 import Card from "../../../components/Card";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
@@ -30,7 +29,7 @@ const Categories = () => {
     categoriesName: "",
     categoriesStatus: "",
   });
-  console.log(catagoryUpdate);
+  
   function createCategories() {
     addDataCategories(newCategories);
     setShow3(!show3);

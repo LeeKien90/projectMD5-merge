@@ -1,9 +1,10 @@
 import axios from 'axios';
-import { BASE_URL_CATEGORIESLIST, BASE_URL_PRODUCTLIST, BASE_URL_USERLIST } from '../constants/constantsLink'
+import { BASE_URL_CATEGORIESLIST, BASE_URL_COLORLIST, BASE_URL_PRODUCTLIST, BASE_URL_USERLIST } from '../constants/constantsLink'
 
 const categoriesURL = BASE_URL_CATEGORIESLIST;
 const productURL = BASE_URL_PRODUCTLIST;
 const userURL = BASE_URL_USERLIST;
+const colorURL = BASE_URL_COLORLIST
 
 // Categories
 export const getDataCategories = async (id) => {
@@ -57,4 +58,9 @@ export const updateDataUser = async (id, user) => {
 
 export const deleteDataUser = async (id) => {
     return await axios.delete(`${userURL}/${id}`);
+};
+
+export const getDataColor = async (id) => {
+    id = id || "";
+    return await axios.get(`${colorURL}/${id}`);
 };
