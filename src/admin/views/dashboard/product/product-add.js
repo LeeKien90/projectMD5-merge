@@ -35,7 +35,6 @@ const ProductAdd = () => {
 
   const createProduct = () => {
     product.description = ckedit.slice(4, ckedit.length - 4);
-    console.log("des", product);
     addDataProduct(product);
     setCall(call);
   };

@@ -37,8 +37,16 @@ const DefaultRouter = () => {
             exact
             component={UserProfile}
           />
-          <Route path="/admin/dashboard/app/user-add" exact component={UserAdd} />
-          <Route path="/admin/dashboard/app/user-list" exact component={UserList} />
+          <Route
+            path="/admin/dashboard/app/user-add"
+            exact
+            component={UserAdd}
+          />
+          <Route
+            path="/admin/dashboard/app/user-list"
+            exact
+            component={UserList}
+          />
           <Route
             path="/admin/dashboard/app/user-privacy-setting"
             exact

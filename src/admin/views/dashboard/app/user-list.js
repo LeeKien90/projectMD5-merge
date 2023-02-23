@@ -2,44 +2,24 @@ import React, { useEffect, useState } from "react";
 import { Row, Col, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Card from "../../../components/Card";
-
-// img
-import shap1 from "../../../assets/images/shapes/01.png";
-import shap2 from "../../../assets/images/shapes/02.png";
-import { getDataUser } from "../../../../service/api";
-
-const userlist = [
-  {
-    img: `${shap1}`,
-    name: "Anna Sthesia",
-    phone: "(760) 756 7568",
-    email: "annasthesia@gmail.com",
-    permission: "admin",
-    status: "Active",
-
-    color: "bg-primary",
-  },
-  {
-    img: `${shap2}`,
-    name: "Brock Lee",
-    phone: "+62 5689 458 658",
-    email: "brocklee@gmail.com",
-    permission: "user",
-    status: "Active",
-
-    color: "bg-primary",
-  },
-];
+import { deleteDataUser, getDataUser } from "../../../../service/api";
 
 const UserList = () => {
   const [listUser, setListUser] = useState([]);
- 
+  const [del, setDel] = useState(true);
+
+  const userDeleted = (id) => {
+    deleteDataUser(id).then(() => {
+      setDel(!del);
+    });
+  };
+
   useEffect(() => {
     let getAllUser = getDataUser();
     getAllUser.then((res) => {
       setListUser(res.data);
     });
-  }, []);
+  }, [del]);
   console.log(listUser);
   return (
     <>
@@ -136,6 +116,9 @@ const UserList = () => {
                                 title=""
                                 data-original-title="Delete"
                                 to="#"
+                                onClick={() => {
+                                  userDeleted(user.id);
+                                }}
                               >
                                 <span className="btn-inner">
                                   <svg

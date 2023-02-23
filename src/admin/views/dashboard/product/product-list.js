@@ -1,8 +1,10 @@
 import React from "react";
 import { Row, Col, Modal, Form, Button, Image } from "react-bootstrap";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import Card from "../../../components/Card";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 import { useState, useEffect } from "react";
 import {
@@ -18,17 +20,9 @@ const ProductList = () => {
   const [listProduct, setListProduct] = useState([]);
   const [listCastegories, setListCategories] = useState([]);
   const [listColor, setListColor] = useState([]);
-  const [product, setProduct] = useState({
-    categories: "",
-    productName: "",
-    price: "",
-    quantity: "",
-    description: "",
-    imageProduct: "",
-    color: "",
-    status: "",
-    id: "",
-  });
+  const [ckedit, setCkedit] = useState("");
+  let history = useHistory();
+
   const [del, setDel] = useState(true);
   const [show, setShow] = useState(false);
   const [updatePro, setUpdatePro] = useState(true);
@@ -52,7 +46,6 @@ const ProductList = () => {
       });
     });
   };
-
 
   useEffect(() => {
     let getAllProduct = getDataProduct();
@@ -88,7 +81,7 @@ const ProductList = () => {
                     <Modal.Header closeButton>
                       <Modal.Title>Edit Product</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body  className="row">
+                    <Modal.Body className="row">
                       <Form.Group
                         className="col-md-6 form-group"
                         controlId="formBasicPassword"
@@ -164,6 +157,36 @@ const ProductList = () => {
                         />
                       </Form.Group>
                       <Form.Group
+                        className="col-md-12 form-group"
+                        controlId="formBasicPassword"
+                      >
+                        <Form.Label>Descriptions</Form.Label>
+                        <CKEditor
+                          editor={ClassicEditor}
+                          value={updatePro.description}
+                          onChange={(event, editor) => {
+                            setCkedit(editor.getData());
+                          }}
+                        />
+                        {/* <select
+                          className="selectpicker form-control"
+                          data-style="py-0"
+                          value={updatePro.description}
+                          name="description"
+                          onChange={(e) =>
+                            setUpdatePro({
+                              ...updatePro,
+                              description: e.target.value,
+                            })
+                          }
+                        >
+                          <option>Select</option>
+                          {listCastegories.map((cat) => (
+                            <option>{cat.categoriesName}</option>
+                          ))}
+                        </select> */}
+                      </Form.Group>
+                      <Form.Group
                         className="col-md-6 form-group"
                         controlId="formBasicPassword"
                       >
@@ -180,7 +203,6 @@ const ProductList = () => {
                             })
                           }
                         >
-                          
                           {listColor.map((c) => (
                             <option>{c.colorName}</option>
                           ))}
@@ -203,7 +225,6 @@ const ProductList = () => {
                             })
                           }
                         >
-                          
                           <option>Hoạt động</option>
                           <option>Không Hoạt động</option>
                         </select>
@@ -253,17 +274,22 @@ const ProductList = () => {
                             />
                           </td>
                           <td>
-                            <Link
+                            <button
+                              onClick={() => {
+                                history.push(
+                                  "/admin/dashboard/product/product-detail",
+                                  pro
+                                );
+                              }}
                               className={`${
                                 location.pathname ===
                                 "/admin/dashboard/product/product-detail"
                                   ? "active"
                                   : ""
                               } nav-link`}
-                              to="/admin/dashboard/product/product-detail"
                             >
                               {pro.productName}
-                            </Link>
+                            </button>
                           </td>
                           <td>{pro.price}</td>
                           <td>{pro.quantity}</td>
