@@ -286,7 +286,7 @@ const ProductList = () => {
                                 "/admin/dashboard/product/product-detail"
                                   ? "active"
                                   : ""
-                              } nav-link`}
+                              } bg-soft-primary`}
                             >
                               {pro.productName}
                             </button>

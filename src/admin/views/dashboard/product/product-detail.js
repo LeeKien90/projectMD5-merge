@@ -76,10 +76,10 @@ const ProductDetail = () => {
               <Tab.Pane eventKey="first" id="profile-feed">
                 <Card>
                   <Card.Body className="p-0">
-                    <div className="user-post">
+                    <div className="user-post text-center mt-5">
                       <Link to="#">
                         <Image
-                          src={pages2}
+                          src={product.imageProduct}
                           alt="post-image"
                           className="img-fluid"
                         />
